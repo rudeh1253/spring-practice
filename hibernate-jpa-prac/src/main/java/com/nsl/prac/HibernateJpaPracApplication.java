@@ -1,5 +1,8 @@
 package com.nsl.prac;
 
+import com.nsl.prac.dao.VertexDAO;
+import com.nsl.prac.entity.Vertex;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +18,21 @@ public class HibernateJpaPracApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner(String[] args) {
-		return (runner) -> System.out.println("Hello");
+		return (runner) -> run(args);
+	}
+	
+	@Autowired
+	private VertexDAO vertexDAO;
+	
+	private void run(String[] args) {
+		createVertex();
+	}
+	
+	private void createVertex() {
+		System.out.println("Creating new vertex object");
+		Vertex vertex = new Vertex();
+		vertex.setTitle("First vertex");
+		vertexDAO.save(vertex);
+		System.out.println("Saved student. Generated id: " + vertex.getId());
 	}
 }
