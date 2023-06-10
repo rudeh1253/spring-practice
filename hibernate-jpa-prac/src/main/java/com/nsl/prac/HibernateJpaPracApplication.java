@@ -25,7 +25,7 @@ public class HibernateJpaPracApplication {
 	private VertexDAO vertexDAO;
 	
 	private void run(String[] args) {
-		createVertex();
+		readVertex();
 	}
 	
 	private void createVertex() {
@@ -34,5 +34,10 @@ public class HibernateJpaPracApplication {
 		vertex.setTitle("First vertex");
 		vertexDAO.save(vertex);
 		System.out.println("Saved student. Generated id: " + vertex.getId());
+	}
+	
+	private void readVertex() {
+		Vertex vertex = vertexDAO.findVertexById(1);
+		System.out.println(vertex);
 	}
 }

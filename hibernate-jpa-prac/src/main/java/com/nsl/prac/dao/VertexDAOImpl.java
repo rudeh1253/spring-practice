@@ -16,4 +16,11 @@ public class VertexDAOImpl implements VertexDAO {
     public void save(Vertex vertex) {
         entityManager.persist(vertex);
     }
+    
+    @Override
+    @Transactional
+    public Vertex findVertexById(int id) {
+        Vertex v = entityManager.find(Vertex.class, id);
+        return v;
+    }
 }

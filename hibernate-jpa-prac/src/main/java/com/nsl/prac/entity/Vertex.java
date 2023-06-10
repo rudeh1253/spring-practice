@@ -54,4 +54,14 @@ public class Vertex {
     public void setPosY(float posY) {
         this.posY = posY;
     }
+    
+    @Override
+    public String toString() {
+        return "Vertex{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", posX=" + posX +
+                ", posY=" + posY +
+                '}';
+    }
 }
