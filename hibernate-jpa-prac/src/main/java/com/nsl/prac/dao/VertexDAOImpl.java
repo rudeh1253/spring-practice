@@ -43,4 +43,14 @@ public class VertexDAOImpl implements VertexDAO {
         vertex.setPosY(newPosY);
         entityManager.merge(vertex);
     }
+    
+    @Override
+    @Transactional
+    public int updateAll(String from, String which, Object to, String where) {
+        String toStatement = to instanceof Number ? to.toString() : '\'' + to.toString() + '\'';
+        String whereStatement = where.equals("") || where == null ? "" : " WHERE " + where;
+        String query = "UPDATE " + from + " SET " + which + "=" + toStatement + whereStatement;
+        int numRowsUpdated = entityManager.createQuery(query).executeUpdate();
+        return numRowsUpdated;
+    }
 }

@@ -27,7 +27,7 @@ public class HibernateJpaPracApplication {
 	private VertexDAO vertexDAO;
 	
 	private void run(String[] args) {
-		update(2, "Updated", 10f, 10f);
+		update2();
 	}
 	
 	private void createVertex(String title, float posX, float posY) {
@@ -54,5 +54,10 @@ public class HibernateJpaPracApplication {
 	
 	private void update(int id, String newTitle, float newPosX, float newPosY) {
 		vertexDAO.update(id, newTitle, newPosX, newPosY);
+	}
+	
+	private void update2() {
+		int numRowsUpdated = vertexDAO.updateAll("Vertex", "title", "NAN", "");
+		System.out.println("Updated " + numRowsUpdated + " rows");
 	}
 }

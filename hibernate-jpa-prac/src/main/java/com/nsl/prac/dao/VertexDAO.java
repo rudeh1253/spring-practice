@@ -9,4 +9,5 @@ public interface VertexDAO {
     Vertex findVertexById(int id);
     List<Vertex> findAll();
     void update(int id, String newTitle, float newPosX, float newPosY);
+    int updateAll(String from, String which, Object to, String where);
 }
