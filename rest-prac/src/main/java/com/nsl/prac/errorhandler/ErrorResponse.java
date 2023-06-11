@@ -1,13 +1,16 @@
-package com.nsl.prac.vertex.errpage;
+package com.nsl.prac.errorhandler;
 
-public class VertexErrorResponse {
+import java.time.LocalDateTime;
+import java.util.Calendar;
+
+public class ErrorResponse {
     private int status;
     private String message;
-    private long timeStamp;
+    private LocalDateTime timeStamp;
     
-    public VertexErrorResponse() {}
+    public ErrorResponse() {}
     
-    public VertexErrorResponse(int status, String message, long timeStamp) {
+    public ErrorResponse(int status, String message, LocalDateTime timeStamp) {
         this.status = status;
         this.message = message;
         this.timeStamp = timeStamp;
@@ -29,11 +32,11 @@ public class VertexErrorResponse {
         this.message = message;
     }
     
-    public long getTimeStamp() {
+    public LocalDateTime getTimeStamp() {
         return timeStamp;
     }
     
-    public void setTimeStamp(long timeStamp) {
+    public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
     }
 }
