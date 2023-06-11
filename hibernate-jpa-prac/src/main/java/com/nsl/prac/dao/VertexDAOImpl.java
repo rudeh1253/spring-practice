@@ -53,4 +53,11 @@ public class VertexDAOImpl implements VertexDAO {
         int numRowsUpdated = entityManager.createQuery(query).executeUpdate();
         return numRowsUpdated;
     }
+    
+    @Override
+    @Transactional
+    public <T> void delete(int id, Class<T> from) {
+        T which = entityManager.find(from, id);
+        entityManager.remove(which);
+    }
 }
