@@ -33,4 +33,14 @@ public class VertexDAOImpl implements VertexDAO {
         List<Vertex> vertices = query.getResultList();
         return vertices;
     }
+    
+    @Override
+    @Transactional
+    public void update(int id, String newTitle, float newPosX, float newPosY) {
+        Vertex vertex = entityManager.find(Vertex.class, id);
+        vertex.setTitle(newTitle);
+        vertex.setPosX(newPosX);
+        vertex.setPosY(newPosY);
+        entityManager.merge(vertex);
+    }
 }

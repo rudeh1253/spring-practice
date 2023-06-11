@@ -27,7 +27,7 @@ public class HibernateJpaPracApplication {
 	private VertexDAO vertexDAO;
 	
 	private void run(String[] args) {
-		printList(readAllVertices());
+		update(2, "Updated", 10f, 10f);
 	}
 	
 	private void createVertex(String title, float posX, float posY) {
@@ -50,5 +50,9 @@ public class HibernateJpaPracApplication {
 		for (T element : list) {
 			System.out.println(element);
 		}
+	}
+	
+	private void update(int id, String newTitle, float newPosX, float newPosY) {
+		vertexDAO.update(id, newTitle, newPosX, newPosY);
 	}
 }
