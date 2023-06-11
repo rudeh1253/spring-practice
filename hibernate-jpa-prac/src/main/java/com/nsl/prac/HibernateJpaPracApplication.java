@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class HibernateJpaPracApplication {
 
@@ -25,13 +27,12 @@ public class HibernateJpaPracApplication {
 	private VertexDAO vertexDAO;
 	
 	private void run(String[] args) {
-		readVertex();
+		printList(readAllVertices());
 	}
 	
-	private void createVertex() {
+	private void createVertex(String title, float posX, float posY) {
 		System.out.println("Creating new vertex object");
-		Vertex vertex = new Vertex();
-		vertex.setTitle("First vertex");
+		Vertex vertex = new Vertex(title, posX, posY);
 		vertexDAO.save(vertex);
 		System.out.println("Saved student. Generated id: " + vertex.getId());
 	}
@@ -39,5 +40,15 @@ public class HibernateJpaPracApplication {
 	private void readVertex() {
 		Vertex vertex = vertexDAO.findVertexById(1);
 		System.out.println(vertex);
+	}
+	
+	private List<Vertex> readAllVertices() {
+		return vertexDAO.findAll();
+	}
+	
+	private <T> void printList(List<T> list) {
+		for (T element : list) {
+			System.out.println(element);
+		}
 	}
 }
