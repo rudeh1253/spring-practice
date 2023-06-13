@@ -1,7 +1,6 @@
 package com.nsl.prac.vertex.controller;
 
-import com.nsl.prac.common.Response;
-import com.nsl.prac.vertex.dto.VertexResponseDTO;
+import com.nsl.prac.common.response.Response;
 import com.nsl.prac.vertex.service.VertexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

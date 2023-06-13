@@ -1,4 +1,4 @@
-package com.nsl.prac.common;
+package com.nsl.prac.common.response;
 
 
 import lombok.Builder;
