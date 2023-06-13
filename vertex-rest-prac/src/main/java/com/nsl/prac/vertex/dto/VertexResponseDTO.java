@@ -19,6 +19,9 @@ public class VertexResponseDTO {
     private float yPos;
     
     public static VertexResponseDTO from(Vertex vertex) {
+        if (vertex == null) {
+            return VertexResponseDTO.builder().id(-1).build();
+        }
         return VertexResponseDTO.builder()
                 .id(vertex.getId())
                 .title(vertex.getTitle())
