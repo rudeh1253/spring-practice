@@ -2,9 +2,15 @@ package com.nsl.prac.common;
 
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class Response {
     private int statusCode;
     private String message;

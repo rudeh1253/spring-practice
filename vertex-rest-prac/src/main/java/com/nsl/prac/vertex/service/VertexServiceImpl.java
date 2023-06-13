@@ -1,12 +1,14 @@
 package com.nsl.prac.vertex.service;
 
 import com.nsl.prac.vertex.domain.Vertex;
+import com.nsl.prac.vertex.dto.VertexResponseDTO;
 import com.nsl.prac.vertex.repository.VertexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class VertexServiceImpl implements VertexService {
@@ -14,13 +16,17 @@ public class VertexServiceImpl implements VertexService {
     VertexRepository vertexRepository;
 
     @Override
-    public Optional<Vertex> findById(int id) {
-        return vertexRepository.findById(id);
+    public VertexResponseDTO findById(int id) {
+        Optional<Vertex> result = vertexRepository.findById(id);
+        VertexResponseDTO dto = VertexResponseDTO.from(result.orElse(null));
+        return dto;
     }
 
     @Override
-    public List<Vertex> findAll() {
-        return vertexRepository.findAll();
+    public List<VertexResponseDTO> findAll() {
+        return vertexRepository.findAll().stream()
+                .map(VertexResponseDTO::from)
+                .collect(Collectors.toList());
     }
 
     @Override
