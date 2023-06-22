@@ -4,10 +4,12 @@ import hello.domain.Member;
 import hello.repository.MemberRepository;
 import hello.repository.MemoryMemberRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
