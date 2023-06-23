@@ -11,11 +11,11 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-    private EntityManager entityManager;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
@@ -25,6 +25,6 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new JpaMemberRepository(entityManager);
+        return memberRepository;
     }
 }
