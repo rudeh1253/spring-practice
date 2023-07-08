@@ -12,8 +12,10 @@ public class OrderApp {
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
-        Member findMember = memberService.findMember(1L);
-        System.out.println("new member = " + member.getName());
-        System.out.println("find member = " + findMember.getName());
+        OrderService orderService = appConfig.orderService();
+
+        Order order = orderService.createOrder(1L, "itemA", 20000);
+
+        System.out.println("order = " + order);
     }
 }
