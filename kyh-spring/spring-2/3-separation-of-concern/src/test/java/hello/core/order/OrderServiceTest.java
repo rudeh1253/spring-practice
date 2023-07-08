@@ -3,12 +3,19 @@ package hello.core.order;
 import hello.core.discount.FixedDiscountPolicy;
 import hello.core.member.*;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberRepository memberRepository = new MemoryMemberRepository();
-    MemberService memberService = new MemberServiceImpl(memberRepository);
-    OrderService orderService = new OrderServiceImpl(memberRepository, new FixedDiscountPolicy());
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void initialize() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     public void createOrder() {
